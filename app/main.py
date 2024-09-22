@@ -17,7 +17,7 @@ def main(
     if isinstance(printed_literature, PrintedLiterature):
         if isinstance(printed_literature, Book):
             return process_book_commands(printed_literature, commands)
-    print(f"There is no matched printed literature {printed_literature}")
+    print(f"There is no suitable printed literature {printed_literature}")
 
 
 def process_book_commands(
