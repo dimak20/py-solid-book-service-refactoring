@@ -14,7 +14,7 @@ def main(
         printed_literature: PrintedLiterature,
         commands: list[tuple[str, str]]
 ) -> None | str:
-    if printed_literature in PRINTED_LITERATURE:
+    if isinstance(printed_literature, PrintedLiterature):
         if isinstance(printed_literature, Book):
             return process_book_commands(printed_literature, commands)
     print(f"There is no matched printed literature {printed_literature}")
