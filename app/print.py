@@ -2,9 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class Print(ABC):
-    def __init__(self, entity: str) -> None:
-        self.entity = entity
-
     @abstractmethod
     def print_entity(self, context: dict) -> None:
         """
@@ -44,7 +41,7 @@ class ConsolePrint(Print):
         self._print_text(context["text"])
 
     def _print_heading(self, heading: str) -> None:
-        print(f"Printing the {self.entity}: {heading}...")
+        print(f"Printing the book: {heading}...")
 
     def _print_text(self, text: str) -> None:
         print(text)
@@ -56,7 +53,7 @@ class ReversePrint(Print):
         self._print_text(context["text"])
 
     def _print_heading(self, heading: str) -> None:
-        print(f"Printing the {self.entity} in reverse: {heading}...")
+        print(f"Printing the book in reverse: {heading}...")
 
     def _print_text(self, text: str) -> None:
         print(text[::-1])

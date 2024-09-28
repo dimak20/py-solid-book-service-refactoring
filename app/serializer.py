@@ -4,9 +4,6 @@ from abc import ABC, abstractmethod
 
 
 class Serializer(ABC):
-    def __init__(self, entity: str) -> None:
-        self.entity = entity
-
     @abstractmethod
     def convert_data(self, context: dict) -> str:
         """
@@ -34,7 +31,7 @@ class JSONSerializer(Serializer):
 
 class XMLSerializer(Serializer):
     def convert_data(self, context: dict) -> str:
-        root = XmlET.Element(self.entity)
+        root = XmlET.Element("book")
         title = XmlET.SubElement(root, "title")
         title.text = context["heading"]
         content = XmlET.SubElement(root, "content")

@@ -2,9 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class Display(ABC):
-    def __init__(self, entity: str) -> None:
-        self.entity = entity
-
     @abstractmethod
     def display(self, content: str) -> None:
         """

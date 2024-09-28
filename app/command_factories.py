@@ -11,12 +11,10 @@ class CommandFabric(ABC):
     def create_command_class(
             self,
             command: str,
-            entity: str
     ) -> Type["CommandFabric"]:
         """
         Returns class instance with given command
         Args:
-            entity: str
             command: str
 
         Returns: class object
@@ -28,37 +26,37 @@ class CommandFabric(ABC):
 class DisplayCommands(CommandFabric):
     def __init__(self) -> None:
         self.commands = {
-            "console": ConsoleDisplay,
-            "reverse": ReverseDisplay
+            "console": ConsoleDisplay(),
+            "reverse": ReverseDisplay()
         }
 
-    def create_command_class(self, command: str, entity: str) -> Display:
+    def create_command_class(self, command: str) -> Display:
         if command in self.commands:
-            return self.commands[command](entity)
+            return self.commands[command]
         raise ValueError(f"Unknown display type: {command}")
 
 
 class PrintCommands(CommandFabric):
     def __init__(self) -> None:
         self.commands = {
-            "console": ConsolePrint,
-            "reverse": ReversePrint
+            "console": ConsolePrint(),
+            "reverse": ReversePrint()
         }
 
-    def create_command_class(self, command: str, entity: str) -> Print:
+    def create_command_class(self, command: str) -> Print:
         if command in self.commands:
-            return self.commands[command](entity)
+            return self.commands[command]
         raise ValueError(f"Unknown print type: {command}")
 
 
 class SerializerCommands(CommandFabric):
     def __init__(self) -> None:
         self.commands = {
-            "json": JSONSerializer,
-            "xml": XMLSerializer
+            "json": JSONSerializer(),
+            "xml": XMLSerializer()
         }
 
-    def create_command_class(self, command: str, entity: str) -> Serializer:
+    def create_command_class(self, command: str) -> Serializer:
         if command in self.commands:
-            return self.commands[command](entity)
+            return self.commands[command]
         raise ValueError(f"Unknown serialize type: {command}")
